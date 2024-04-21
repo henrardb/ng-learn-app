@@ -1,3 +1,6 @@
+Repository created for the online training from Simon Dieny youtube channel.
+
+
 # NgLearnApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.5.
