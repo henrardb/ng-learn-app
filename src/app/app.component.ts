@@ -8,13 +8,20 @@ import { Car } from './car';
 })
 export class AppComponent implements OnInit {
   carList: Car[] = CARS;
+  carSelected: Car | undefined;
 
   ngOnInit(): void {
     console.table(this.carList);
-    this.selectCar(this.carList[0]);
   }
 
-  selectCar(car: Car) {
-    console.log(`Vous avez cliqué sur la voiture ${car.name}`);
+  selectCar(carId: string) {
+    const car: Car | undefined = this.carList.find((car) => car.id == +carId);
+    if (car) {
+      console.log(`Vous avez demandé la voiture ${car.name}`);
+      this.carSelected = car;
+    } else {
+      console.log(`Vous avez demandé une voiture qui n'existe pas`);
+      this.carSelected = car;
+    }
   }
 }

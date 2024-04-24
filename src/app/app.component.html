@@ -1,12 +1,27 @@
-<h1>Liste de voitures</h1>
-<p (click)="selectCar(carList[0])">{{ carList[0].name }}</p>
-<p>{{ carList[1].name }}</p>
-<p>{{ carList[2].name }}</p>
-<p>{{ carList[3].name }}</p>
-<p>{{ carList[4].name }}</p>
-<p>{{ carList[5].name }}</p>
-<p>{{ carList[6].name }}</p>
-<p>{{ carList[7].name }}</p>
-<p>{{ carList[8].name }}</p>
-<p>{{ carList[9].name }}</p>
-<p>{{ carList[10].name }}</p>
+<h1 class="center">Liste de voitures</h1>
+
+<input #input (keyup.enter)="selectCar(input.value)" type="number" />
+<div class="container">
+  <div class="row">
+    <div *ngFor="let car of carList" class="col m4 s6">
+      <div class="card horizontal" carBorderCard>
+        <div class="card-image">
+          <img height="100px" width="100px" [src]="car.picture" />
+        </div>
+        <div class="card-stacked">
+          <div class="card-content">
+            <p>{{ car.name }}</p>
+            <p>
+              <small>{{ car.created | date : "dd/mm/yyyy" }}</small>
+              <span
+                *ngFor="let cat of car.category"
+                class="{{ cat | carTypeColor }}"
+                >{{ cat }}</span
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
