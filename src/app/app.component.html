@@ -1,27 +1,7 @@
-<h1 class="center">Liste de voitures</h1>
-
-<input #input (keyup.enter)="selectCar(input.value)" type="number" />
-<div class="container">
-  <div class="row">
-    <div *ngFor="let car of carList" class="col m4 s6">
-      <div class="card horizontal" carBorderCard>
-        <div class="card-image">
-          <img height="100px" width="100px" [src]="car.picture" />
-        </div>
-        <div class="card-stacked">
-          <div class="card-content">
-            <p>{{ car.name }}</p>
-            <p>
-              <small>{{ car.created | date : "dd/mm/yyyy" }}</small>
-              <span
-                *ngFor="let cat of car.category"
-                class="{{ cat | carTypeColor }}"
-                >{{ cat }}</span
-              >
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
+<nav>
+  <div class="nav-wrapper light-red">
+    <a href="#" class="brand-logo center"> Voitures </a>
   </div>
-</div>
+</nav>
+
+<router-outlet></router-outlet>
