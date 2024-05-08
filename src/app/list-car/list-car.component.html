@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div *ngFor="let car of carList" class="col m4 s6">
-      <div (click)="goToCar(car)" class="card horizontal" carBorderCard>
+      <div (click)="goToCar(car)" class="card horizontal" carBorderCard="blue">
         <div class="card-image">
           <img height="100px" width="100px" [src]="car.picture" />
         </div>
