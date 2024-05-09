@@ -27,4 +27,8 @@ export class DetailCarComponent implements OnInit {
   goToCarList() {
     this.router.navigate(['/cars']);
   }
+
+  goToEditCar(car: Car) {
+    this.router.navigate(['/edit/car', car.id]);
+  }
 }
