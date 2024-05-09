@@ -5,6 +5,7 @@ import { DetailCarComponent } from './detail-car/detail-car.component';
 import { BorderCardDirective } from './border-card.directive';
 import { CarTypeColorPipe } from './car-type-color.pipe';
 import { Routes, RouterModule } from '@angular/router';
+import { CarService } from './car.service';
 
 const carRoutes: Routes = [
   { path: 'cars', component: ListCarComponent },
@@ -19,5 +20,6 @@ const carRoutes: Routes = [
     CarTypeColorPipe,
   ],
   imports: [CommonModule, RouterModule.forChild(carRoutes)],
+  providers: [CarService],
 })
 export class CarModule {}

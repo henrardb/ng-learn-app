@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CARS } from '../mock-cars-list';
 import { Car } from '../car';
+import { CarService } from '../car.service';
 
 @Component({
   selector: 'app-detail-car',
@@ -11,13 +11,16 @@ export class DetailCarComponent implements OnInit {
   carList: Car[];
   car: Car | undefined;
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private carservice: CarService
+  ) {}
 
   ngOnInit() {
-    this.carList = CARS;
     const carId: string | null = this.route.snapshot.paramMap.get('id');
     if (carId) {
-      this.car = this.carList.find((car) => car.id == +carId);
+      this.car = this.carservice.getCarById(+carId);
     }
   }
 

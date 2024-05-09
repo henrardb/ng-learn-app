@@ -1,16 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CARS } from '../mock-cars-list';
 import { Car } from '../car';
+import { CarService } from '../car.service';
 
 @Component({
   selector: 'app-list-car',
   templateUrl: './list-car.component.html',
 })
-export class ListCarComponent {
-  carList: Car[] = CARS;
+export class ListCarComponent implements OnInit {
+  carList: Car[];
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private carservice: CarService) {}
+
+  ngOnInit() {
+    this.carList = this.carservice.getCarList();
+  }
 
   goToCar(car: Car) {
     this.router.navigate(['/car', car.id]);
