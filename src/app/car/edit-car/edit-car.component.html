@@ -1,0 +1,5 @@
+<h2 class="center">Editer {{ car?.name }}</h2>
+<p *ngIf="car" class="center">
+  <img [src]="car.picture" />
+</p>
+<app-car-form *ngIf="car" [car]="car"></app-car-form>
