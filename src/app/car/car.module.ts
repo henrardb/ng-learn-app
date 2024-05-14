@@ -9,9 +9,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { CarService } from './car.service';
 import { CarFormComponent } from './car-form/car-form.component';
 import { EditCarComponent } from './edit-car/edit-car.component';
+import { AddCarComponent } from './add-car/add-car.component';
 
 const carRoutes: Routes = [
   { path: 'edit/car/:id', component: EditCarComponent },
+  { path: 'car/add', component: AddCarComponent },
   { path: 'cars', component: ListCarComponent },
   { path: 'car/:id', component: DetailCarComponent },
 ];
@@ -24,6 +26,7 @@ const carRoutes: Routes = [
     CarTypeColorPipe,
     CarFormComponent,
     EditCarComponent,
+    AddCarComponent,
   ],
   imports: [CommonModule, FormsModule, RouterModule.forChild(carRoutes)],
   providers: [CarService],

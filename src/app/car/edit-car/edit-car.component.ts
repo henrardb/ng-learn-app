@@ -16,7 +16,7 @@ export class EditCarComponent implements OnInit {
     const carId: string | null = this.route.snapshot.paramMap.get('id');
 
     if (carId) {
-      this.car = this.carService.getCarById(+carId);
+      this.carService.getCarById(+carId).subscribe((car) => (this.car = car));
     } else {
       this.car = undefined;
     }

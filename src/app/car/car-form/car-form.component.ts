@@ -11,11 +11,13 @@ import { Router } from '@angular/router';
 export class CarFormComponent implements OnInit {
   @Input() car: Car;
   categories: string[];
+  isAddForm: boolean;
 
   constructor(private carService: CarService, private router: Router) {}
 
   ngOnInit() {
     this.categories = this.carService.getCarCategoryList();
+    this.isAddForm = this.router.url.includes('add');
   }
 
   hasCategory(category: string): boolean {
@@ -45,7 +47,14 @@ export class CarFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('Submit form !');
-    this.router.navigate(['/car', this.car.id]);
+    if (this.isAddForm) {
+      this.carService
+        .addCar(this.car)
+        .subscribe((car: Car) => this.router.navigate(['/car', car.id]));
+    } else {
+      this.carService.updateCar(this.car).subscribe(() => {
+        this.router.navigate(['/car', this.car.id]);
+      });
+    }
   }
 }

@@ -20,8 +20,12 @@ export class DetailCarComponent implements OnInit {
   ngOnInit() {
     const carId: string | null = this.route.snapshot.paramMap.get('id');
     if (carId) {
-      this.car = this.carservice.getCarById(+carId);
+      this.carservice.getCarById(+carId).subscribe((car) => (this.car = car));
     }
+  }
+
+  deleteCar(car: Car) {
+    this.carservice.deleteCarById(car.id).subscribe(() => this.goToCarList());
   }
 
   goToCarList() {
